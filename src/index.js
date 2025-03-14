@@ -6,9 +6,25 @@ const DiscordBot = require('./client/DiscordBot');
 
 const client = new DiscordBot();
 
+// Load event handlers
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+  const event = require(`./events/${file}`);
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args));
+  }
+}
+
 module.exports = client;
 
 client.connect();
 
-process.on('unhandledRejection', console.error);
-process.on('uncaughtException', console.error);
+process.on('unhandledRejection', error => {
+  console.error('Unhandled promise rejection:', error);
+});
+
+process.on('uncaughtException', error => {
+  console.error('Uncaught exception:', error);
+});
