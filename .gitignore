@@ -3,3 +3,5 @@ node_modules
 # DO NOT REMOVE THESE FOR SECURITY
 .env
 .vercel
+
+.vercel
