@@ -1,3 +1,5 @@
+console.log("Starting the bot...");
+
 require('dotenv').config();
 const fs = require('fs');
 const DiscordBot = require('./client/DiscordBot');
