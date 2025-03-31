@@ -7,13 +7,22 @@ class DiscordBot extends Client {
 
     this.commands = new Map();
     this.loadCommands();
+    this.loadComponents();
   }
 
   loadCommands() {
-    const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+    const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
     for (const file of commandFiles) {
       const command = require(`../commands/${file}`);
       this.commands.set(command.name, command);
+    }
+  }
+
+  loadComponents() {
+    const componentFiles = fs.readdirSync('./src/components').filter(file => file.endsWith('.js'));
+    for (const file of componentFiles) {
+      const component = require(`../components/${file}`);
+      this.components.set(component.name, component);
     }
   }
 

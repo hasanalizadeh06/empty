@@ -19,10 +19,6 @@ class CommandsListener {
 
             let prefix = config.commands.prefix;
 
-            if (client.database.has('prefix-' + message.guild.id)) {
-                prefix = client.database.get('prefix-' + message.guild.id);
-            }
-
             if (!message.content.startsWith(prefix)) return;
 
             const args = message.content.slice(prefix.length).trim().split(/\s+/g);

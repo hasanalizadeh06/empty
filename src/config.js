@@ -7,7 +7,7 @@ const config = {
         guildId: 'Your bot development guild ID',
     },
     commands: {
-        prefix: '?', // For message commands, prefix is required. This can be changed by a database.
+        prefix: '.', // For message commands, prefix is required. This can be changed by a database.
         message_commands: true, // If true, the bot will allow users to use message (or prefix) commands.
         application_commands: {
             chat_input: true, // If true, the bot will allow users to use chat input (or slash) commands.
